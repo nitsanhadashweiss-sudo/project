@@ -1,13 +1,14 @@
 import consts
 import game_field
+import main
 
 corner=(0,0)
 
 def clean_soldier():
     for row in range(consts.SOLDIER_ROWS):
         for col in range(consts.SOLDIER_COLS):
-            if game_field.field()[row][col]==consts.HEAD or game_field.field()[row][col]==consts.LEGS:
-                game_field.field()[row][col] = consts.EMPTY
+            if game_field.field[row][col]==consts.HEAD or game_field.field[row][col]==consts.LEGS:
+                game_field.field[row][col] = consts.EMPTY
 
 
 def soldier(x,y):
@@ -18,17 +19,13 @@ def soldier(x,y):
         for col in range (x,x+consts.SOLDIER_COLS):
             if game_field.field[row][col]==consts.EMPTY:
                 game_field.field[row][col]=consts.HEAD
-            elif game_field.field[row][col]==consts.MINE:
-                touch_mine()
             elif game_field.field[row][col]==consts.FLAG:
-                touch_flag()
+                main.win()
     for col in range (x,x+consts.SOLDIER_COLS):
         if game_field.field[y+consts.SOLDIER_BODY_ROWS][col] == consts.EMPTY:
             game_field.field[y+consts.SOLDIER_BODY_ROWS][col]=consts.LEGS
         if game_field.field[y+consts.SOLDIER_BODY_ROWS][col] == consts.MINE:
-            touch_mine()
-
-
+            main.lose()
 
 def can_move (action):
     global corner
@@ -60,18 +57,3 @@ def soldier_move(action):
         soldier(corner[0]+1,corner[1])
 
 
-
-
-
-
-def touch_flag(): #[(0,0),(0,1)]
-    #body
-    pass
-
-#gets list of leg places in matrix, and list of flag places in matrix
-def touch_mine(): #[(0,0),(0,1)]
-
-
-
-    #win message 3 seconds
-    pass

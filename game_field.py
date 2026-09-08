@@ -48,3 +48,6 @@ def add_random_mines():
         if place!=consts.HEAD and place!=consts.LEGS and place!=consts.FLAG and place!=consts.MINE:  # not where soldier starts and not where flag
             field[rand_r][rand_c] = consts.MINE  # add on that place mine
             count += 1
+
+def board_show():
+    pass

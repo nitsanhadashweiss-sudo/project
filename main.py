@@ -1,3 +1,4 @@
+import sys
 import consts
 import screen
 import soldier
@@ -5,12 +6,28 @@ import game_field
 import time
 import pygame
 
-game_field.create_field()
 
+won=False
+lost=False
+
+def win():
+    screen.draw_message(consts.WIN_MESSAGE)
+    time.sleep(3)
+    global won
+    won= True
+
+
+def lose():
+    screen.draw_message(consts.LOSE_MESSAGE)
+    time.sleep(3)
+    global lose
+    lost = True
+
+
+game_field.create_field()
 
 running = True
 while running:
-    screen.fill(consts.COLOR_BACKGROUND)
     current_time = pygame.time.get_ticks()
 
     for event in pygame.event.get():
@@ -28,25 +45,15 @@ while running:
     elif keys[pygame.K_RIGHT]:
         action=4
 
-soldier.soldier_move(action)
+    if keys[pygame.K_KP_ENTER]:
+        game_field.board_show()
 
+    soldier.soldier_move(action)
 
-
-    if lives <= 0:
-        print("GAME OVER!")
-        running = False
-
-    pygame.display.flip()
-    clock.tick(30)
+if won or lost:
+    running = False
 
 pygame.quit()
 sys.exit()
 
-def win():
 
-    time.sleep(3)
-    pass
-
-def lose():
-
-    pass
