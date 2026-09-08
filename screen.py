@@ -19,7 +19,7 @@
 #     # fill the screen with a color to wipe away anything from last frame
 #     screen.fill(consts.GREEN)
 #
-#     # SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+#     # SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSs
 #     # soldier_img=pygame.image.load("soldier.png") #soooolldierr
 #     # imagerect = soldier_img.get_rect()
 #     # screen.blit(soldier_img, imagerect)
