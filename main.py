@@ -20,7 +20,7 @@ def win():
 def lose():
     screen.draw_message(consts.LOSE_MESSAGE)
     time.sleep(3)
-    global lose
+    global lost
     lost = True
 
 
