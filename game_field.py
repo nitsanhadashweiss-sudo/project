@@ -32,7 +32,7 @@ def create_field():
     #make the whole field empty
     field=[[consts.EMPTY]*consts.BOARD_COLS for i in range(consts.BOARD_ROWS)]
 
-    #put soldier at start
+    #put soldier at startt
     # for r in range(0,consts.SOLDIER_BODY_ROWS):
     #     for c in range(0,consts.SOLDIER_COLS):
     #         field[r][c]=consts.HEAD
