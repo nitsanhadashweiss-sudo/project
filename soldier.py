@@ -1,4 +1,25 @@
 import consts
+import game_field
+
+
+def soldier(x,y):
+    for row in range (y,y+consts.SOLDIER_BODY_ROWS-1):
+        for col in range (x,x+consts.SOLDIER_COLS):
+            game_field.field()[row][col]="HEAD"
+    for col in range (x,x+consts.SOLDIER_COLS):
+        game_field.field()[y+consts.SOLDIER_BODY_ROWS][col]="LEGS"
+
+
+def move (action)
+    if action==1:
+        for
+
+
+
+
+
+
+
 
 
 
