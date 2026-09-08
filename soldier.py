@@ -16,15 +16,17 @@ def soldier(x,y):
     corner=(x,y)
     for row in range (y,y+consts.SOLDIER_BODY_ROWS-1):
         for col in range (x,x+consts.SOLDIER_COLS):
-            if game_field.field()[row][col]==consts.EMPTY:
-                game_field.field()[row][col]=consts.HEAD
-            elif game_field.field()[row][col]==consts.MINE:
+            if game_field.field[row][col]==consts.EMPTY:
+                game_field.field[row][col]=consts.HEAD
+            elif game_field.field[row][col]==consts.MINE:
                 touch_mine()
-            elif game_field.field()[row][col]==consts.FLAG:
+            elif game_field.field[row][col]==consts.FLAG:
                 touch_flag()
-
     for col in range (x,x+consts.SOLDIER_COLS):
-        game_field.field()[y+consts.SOLDIER_BODY_ROWS][col]=consts.LEGS
+        if game_field.field[y+consts.SOLDIER_BODY_ROWS][col] == consts.EMPTY:
+            game_field.field[y+consts.SOLDIER_BODY_ROWS][col]=consts.LEGS
+        if game_field.field[y+consts.SOLDIER_BODY_ROWS][col] == consts.MINE:
+            touch_mine()
 
 
 
@@ -56,13 +58,6 @@ def soldier_move(action):
         soldier(corner[0],corner[1]+1)
     if action==4:
         soldier(corner[0]+1,corner[1])
-
-
-
-
-
-
-
 
 
 
