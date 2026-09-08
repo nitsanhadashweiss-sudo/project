@@ -45,15 +45,14 @@ def can_move (action):
 
 
 def soldier_move(action):
-    if not can_move(action):
-        return False
-    if action==1:
-        soldier(corner[0],corner[1]-1)
-    if action==2:
-        soldier(corner[0]-1,corner[1])
-    if action==3:
-        soldier(corner[0],corner[1]+1)
-    if action==4:
-        soldier(corner[0]+1,corner[1])
+    if can_move(action):
+        if action==1:
+            soldier(corner[0],corner[1]-1)
+        if action==2:
+            soldier(corner[0]-1,corner[1])
+        if action==3:
+            soldier(corner[0],corner[1]+1)
+        if action==4:
+          soldier(corner[0]+1,corner[1])
 
 
