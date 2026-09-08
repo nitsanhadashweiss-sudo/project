@@ -5,58 +5,31 @@ import soldier
 field=[]
 
 def create_field():
-    for row in range (consts.BOARD_ROWS):
-        field.append([])
-        for col in range(consts.BOARD_COLS):
-            field[row].append(consts.EMPTY)
-
-soldier.soldier(0,0)
-
-    # global field
-    # #make the whole field empty
-    # field=[[consts.EMPTY]*consts.BOARD_COLS for i in range(consts.BOARD_ROWS)]
-    #
-    # #put soldier at start
-    # # for i in range(consts.SOLDIER_ROWS*consts.SOLDIER_COLS):
-    # for r in range(0,consts.SOLDIER_BODY_ROWS):
-    #     for c in range(0,consts.SOLDIER_FEET_ROWS):
-    #         field[r][c]=consts.HEAD
-    #
-    # for r in range(consts.SOLDIER_BODY_ROWS, consts.SOLDIER_BODY_ROWS + consts.SOLDIER_FEET_ROWS):
-    #     for c in range(0,consts.SOLDIER_FEET_ROWS):
-    #         field[r][c] = consts.LEGS
-    #
-    # # soldier.soldier(0,0)
-    #
-    # #put flag at end
-    # for i in range(consts.FLAG_ROWS*consts.FLAG_COLS):
-    #     for r in range(len(field)-1,0,-1):
-    #         for c in range(len(field[r])-1,0,-1):
-    #             if r>len(field)-1-consts.FLAG_ROWS and c>len(field[r])-1-consts.FLAG_COLS:
-    #                 field[r][c]=consts.FLAG
-
+    global field
     #make the whole field empty
+    field=[[consts.EMPTY for c in range(consts.BOARD_COLS)] for i in range(consts.BOARD_ROWS)]
 
-    #put soldier at startt
-    # for r in range(0,consts.SOLDIER_BODY_ROWS):
-    #     for c in range(0,consts.SOLDIER_COLS):
-    #         field[r][c]=consts.HEAD
-    #
-    # for r in range(consts.SOLDIER_BODY_ROWS, consts.SOLDIER_BODY_ROWS + consts.SOLDIER_FEET_ROWS):
-    #     for c in range(0,consts.SOLDIER_COLS):
-    #         field[r][c] = consts.LEGS
+    #put HEAD
+    for r in range(0,consts.SOLDIER_BODY_ROWS):
+        for c in range(0,consts.SOLDIER_COLS):
+            field[r][c]=consts.HEAD
 
-
-    # #put flag at end
-    # for i in range(consts.FLAG_ROWS*consts.FLAG_COLS):
-    #     for r in range(len(field)-1,0,-1):
-    #         for c in range(len(field[r])-1,0,-1):
-    #             if r>len(field)-1-consts.FLAG_ROWS and c>len(field[r])-1-consts.FLAG_COLS:
-    #                 field[r][c]=consts.FLAG
+    #put LEGS
+    start_feet=consts.SOLDIER_BODY_ROWS
+    end_feet=consts.SOLDIER_BODY_ROWS+consts.SOLDIER_FEET_ROWS
+    for r in range(start_feet,end_feet):
+        for c in range(0,consts.SOLDIER_COLS):
+            field[r][c] = consts.LEGS
 
 
+    #put FLAG at end
+    start_r_f=consts.BOARD_ROWS-consts.FLAG_ROWS
+    start_c_f=consts.BOARD_COLS-consts.FLAG_COLS
+    for r in range(start_r_f,consts.BOARD_ROWS):
+        for c in range(start_c_f,consts.BOARD_COLS):
+            field[r][c]=consts.FLAG
 
-
+    add_random_mines()
 
 
 def create_row(row_number):
