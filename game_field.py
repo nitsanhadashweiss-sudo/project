@@ -49,3 +49,5 @@ def add_random_mines():
             field[rand_r][rand_c] = consts.MINE  # add on that place mine
             count += 1
 
+def board_show():
+    pass
