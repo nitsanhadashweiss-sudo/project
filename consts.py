@@ -20,4 +20,5 @@ flag_col = BOARD_COLS - FLAG_COLS
 MINES_COUNT = 20
 MINE_ROWS = 1
 MINE_COLS = 3
+hi
 
