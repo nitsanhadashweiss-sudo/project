@@ -50,7 +50,7 @@ def draw_game(field, soldier_pos, show_mines=False):
             # elif r==consts.FLAG_ROWS-1 and c==consts.FLAG_COLS-1:
             #     screen.blit(flag_img, (x, y))
 
-            #flag
+            #flagg
             # x_flag=consts.CELL_SIZE*consts.FLAG_COLS
             # y_flag=consts.CELL_SIZE*consts.FLAG_ROWS
             # screen.blit(flag_img, (x_flag, y_flag))

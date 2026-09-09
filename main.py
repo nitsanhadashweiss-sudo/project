@@ -57,5 +57,5 @@ sys.exit()
 
 
 # game_field.create_field()
-#
+#-
 # screen.draw_game(game_field.field, (0,0), see_mines)
