@@ -59,6 +59,6 @@ def draw_game(field, soldier_pos, show_mines=False):
 def draw_message(msg):
     font = pygame.font.SysFont(consts.FONT_NAME, consts.FONT_SIZE)
     text_img = font.render(msg, True, consts.BLACK)
-    # screen.blit(rendered_text, (consts.WINDOW_WIDTH // 2 - 50, consts.WINDOW_HEIGHT // 2))
+    # screen.blit(rendered_text, (consts.WINDOW_WIDTH // 2 - 50, consts.WINDOW_HEIGHT // 2)) #
     screen.blit(text_img, (0,0))
     pygame.display.flip()
