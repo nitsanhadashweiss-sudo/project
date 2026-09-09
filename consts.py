@@ -21,9 +21,10 @@ MINES_COUNT = 20
 MINE_ROWS = 1
 MINE_COLS = 3
 
-SOLDIER_IMAGE="soldier.py"
+SOLDIER_IMAGE="soldier.png"
 MINE_IMAGE="mine.png"
-SOLDIER_NIGHT_IMAGE="soldier_night.png"
+SOLDIER_NIGHT="soldier_night.png"
+BUSH_IMAGE="grass.png"
 HEAD="HEAD"
 LEGS="LEGS"
 EMPTY="EMPTY"
