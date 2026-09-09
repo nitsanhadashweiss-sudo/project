@@ -8,11 +8,10 @@ import pygame
 
 running=True
 see_mines=False
-
+game_field.create_field()
 
 while running:
     action=0
-    game_field.create_field()
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
@@ -29,6 +28,8 @@ while running:
                 action = 4
             elif event.key == pygame.K_RETURN: #ENTER   BUT FOR 1 SECOND!
                 see_mines = True
+                # time.sleep(1)
+                # see_mines= False
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_RETURN:  # HIDES MINES BACK
                 see_mines = False

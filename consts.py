@@ -9,6 +9,9 @@ SOLDIER_COLS = 2
 SOLDIER_BODY_ROWS = 3 # the upper part
 SOLDIER_FEET_ROWS = 1 # the lower part
 
+BUSH_COLS=3
+BUSH_ROWS =2
+
 
 FLAG_ROWS = 3
 FLAG_COLS = 4
@@ -38,7 +41,7 @@ WINDOW_HEIGHT=750
 WINDOW_HEIGHT=750
 
 BLACK=(0,0,0)
-GREEN = (0,255,0)
+GREEN = "#0B6623"
 RED = (255, 0, 0)
 
 LOCATION = (80,80)
@@ -49,6 +52,7 @@ MINE_IMAGE = "mine.png"
 BUSH_IMAGE = "grass.png"
 SOLDIER_NIGHT="soldier_night.png"
 SOLDIER_INJURY="injury.png"
+FLAG_IMAGE = "flag.png"
 
 
 WIN_MESSAGE = "YOU WON"
