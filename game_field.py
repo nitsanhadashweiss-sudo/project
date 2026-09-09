@@ -7,18 +7,22 @@ field=[]
 
 def create_field():
     global field
+    #make the whole field empty
     field=[[consts.EMPTY for c in range(consts.BOARD_COLS)] for i in range(consts.BOARD_ROWS)]
 
+    #put HEAD
     for r in range(0,consts.SOLDIER_BODY_ROWS):
         for c in range(0,consts.SOLDIER_COLS):
             field[r][c]=consts.HEAD
 
+    #put LEGS
     start_feet=consts.SOLDIER_BODY_ROWS
     end_feet=consts.SOLDIER_BODY_ROWS+consts.SOLDIER_FEET_ROWS
     for r in range(start_feet,end_feet):
         for c in range(0,consts.SOLDIER_COLS):
             field[r][c] = consts.LEGS
 
+    #put FLAG at end
     start_r_f=consts.BOARD_ROWS-consts.FLAG_ROWS
     start_c_f=consts.BOARD_COLS-consts.FLAG_COLS
     for r in range(start_r_f,consts.BOARD_ROWS):
