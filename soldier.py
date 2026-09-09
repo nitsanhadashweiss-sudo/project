@@ -32,6 +32,20 @@ def soldier(x,y):
 
 def can_move (action):
     global corner
+    # if action==1:
+    #     if corner[1]==0:
+    #         return False
+    # if action==2:
+    #     if corner[0]==0:
+    #         return False
+    # if action==3:
+    #     if corner[1]==consts.BOARD_COLS:
+    #         return False
+    # if action==4:
+    #     if corner[0]==consts.BOARD_ROWS+18:
+    #         return False
+    # return True
+
     if action==1:
         if corner[1]==0:
             return False
