@@ -1,4 +1,7 @@
+from logging import disable
+
 import pygame
+import time
 import consts
 
 pygame.init()
@@ -28,24 +31,39 @@ flag_img=pygame.transform.scale(
         (consts.FLAG_COLS * consts.CELL_SIZE, consts.FLAG_ROWS * consts.CELL_SIZE))
 
 
-def draw_game(field, soldier_pos, show_mines=False):
+def draw_ENTER_game(field, soldier_pos):
     screen.fill(consts.GREEN)
     count_flag = 0
 
-    if show_mines:
-        screen.fill(consts.BLACK)
-        for c in range(consts.BOARD_COLS + 1):
+    screen.fill(consts.BLACK)
+    for c in range(consts.BOARD_COLS + 1):
+        x = c * consts.CELL_SIZE
+        start_pos=(x, 0)
+        end_pos=(x, consts.BOARD_ROWS * consts.CELL_SIZE)
+        pygame.draw.aaline(screen, consts.GREEN, start_pos, end_pos)
+
+    for r in range(consts.BOARD_ROWS + 1):
+        y = r * consts.CELL_SIZE
+        start_pos = (0, y)
+        end_pos = (consts.BOARD_COLS * consts.CELL_SIZE, y)
+        pygame.draw.aaline(screen, consts.GREEN, start_pos, end_pos)
+
+    if soldier_night_img:  # --------injury_img
+        soldier_x = soldier_pos[0] * consts.CELL_SIZE
+        soldier_y = soldier_pos[1] * consts.CELL_SIZE
+        screen.blit(soldier_night_img, (soldier_x, soldier_y))
+
+    for r in range(consts.BOARD_ROWS):
+        for c in range(consts.BOARD_COLS):
             x = c * consts.CELL_SIZE
-            start_pos=(x, 0)
-            end_pos=(x, consts.BOARD_ROWS * consts.CELL_SIZE)
-            pygame.draw.aaline(screen, consts.GREEN, start_pos, end_pos)
-
-        for r in range(consts.BOARD_ROWS + 1):
             y = r * consts.CELL_SIZE
-            start_pos = (0, y)
-            end_pos = (consts.BOARD_COLS * consts.CELL_SIZE, y)
-            pygame.draw.aaline(screen, consts.GREEN, start_pos, end_pos)
+            if field[r][c] == consts.MINE and mine_img:
+                screen.blit(mine_img, (x, y))
 
+
+def  draw_game(field, soldier_pos):
+    screen.fill(consts.GREEN)
+    count_flag = 0
 
     for r in range(consts.BOARD_ROWS):
         for c in range(consts.BOARD_COLS):
@@ -53,45 +71,21 @@ def draw_game(field, soldier_pos, show_mines=False):
             y = r * consts.CELL_SIZE
 
 
-            if field[r][c]==consts.BUSH and bush_img and not show_mines:
+            if field[r][c]==consts.BUSH and bush_img :
                 screen.blit(bush_img,(x, y))
-            elif field[r][c]==consts.MINE and show_mines and mine_img:
-                screen.blit(mine_img,(x, y))
-            elif field[r][c]==consts.SOLDIER_IMAGE and not show_mines: #and not injury
+
+            elif field[r][c]==consts.SOLDIER_IMAGE: #and not injury
                 screen.blit(soldier_img,(x, y))
-            elif field[r][c]==consts.SOLDIER_IMAGE and show_mines:
+            elif field[r][c]==consts.SOLDIER_IMAGE :
                 screen.blit(soldier_night_img,(x, y))
-            elif field[r][c]==consts.FLAG and not show_mines and count_flag==0:
+            elif field[r][c]==consts.FLAG  and count_flag==0:
                 screen.blit(flag_img,(x, y))
                 count_flag+=1
 
 
 
 
-            # elif r==consts.FLAG_ROWS-1 and c==consts.FLAG_COLS-1:
-            #     screen.blit(flag_img, (x, y))
-
-            #flagg
-            # x_flag=consts.CELL_SIZE*consts.FLAG_COLS
-            # y_flag=consts.CELL_SIZE*consts.FLAG_ROWS
-            # screen.blit(flag_img, (x_flag, y_flag))
-
-            # elif field[r][c]==consts.SOLDIER_IMAGE and INJURY:
-            #     screen.blit(injury_img,(x, y))
-            #
-
-
-
-    if soldier_night_img and show_mines: #--------injury_img
-        soldier_x = soldier_pos[0] * consts.CELL_SIZE
-        soldier_y = soldier_pos[1] * consts.CELL_SIZE
-        screen.blit(soldier_night_img, (soldier_x, soldier_y))
-    # if injury_img:
-    #     soldier_x = soldier_pos[0] * consts.CELL_SIZE
-    #     soldier_y = soldier_pos[1] * consts.CELL_SIZE
-    #     screen.blit(injury_img, (soldier_x, soldier_y))
-
-    elif soldier_img:
+    if soldier_img:
         soldier_x=soldier_pos[0]*consts.CELL_SIZE
         soldier_y=soldier_pos[1]*consts.CELL_SIZE
         screen.blit(soldier_img, (soldier_x, soldier_y))
