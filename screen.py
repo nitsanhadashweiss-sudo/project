@@ -31,10 +31,12 @@ flag_img=pygame.transform.scale(
 def draw_game(field, soldier_pos, show_mines=False):
     screen.fill(consts.GREEN)
 
+
     for r in range(consts.BOARD_ROWS):
         for c in range(consts.BOARD_COLS):
             x = c * consts.CELL_SIZE
             y = r * consts.CELL_SIZE
+
 
             if field[r][c]==consts.BUSH and bush_img:
                 screen.blit(bush_img,(x, y))
@@ -45,7 +47,7 @@ def draw_game(field, soldier_pos, show_mines=False):
             elif field[r][c]==consts.SOLDIER_IMAGE and show_mines:
                 screen.blit(soldier_night_img,(x, y))
             elif field[r][c]==consts.FLAG:
-                screen.blit(flag_img,(x, y))
+                screen.blit(flag_img,(r, c))
 
             # elif r==consts.FLAG_ROWS-1 and c==consts.FLAG_COLS-1:
             #     screen.blit(flag_img, (x, y))
