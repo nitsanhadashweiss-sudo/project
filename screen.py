@@ -60,7 +60,7 @@ def draw_game(field, soldier_pos, show_mines=False):
 
             # elif field[r][c]==consts.SOLDIER_IMAGE and INJURY:
             #     screen.blit(injury_img,(x, y))
-            #
+
 
 
 
