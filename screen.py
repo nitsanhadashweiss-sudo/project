@@ -31,7 +31,7 @@ flag_img=pygame.transform.scale(
 def draw_game(field, soldier_pos, show_mines=False):
     screen.fill(consts.GREEN)
 
-
+    one=False
     for r in range(consts.BOARD_ROWS):
         for c in range(consts.BOARD_COLS):
             x = c * consts.CELL_SIZE
@@ -46,8 +46,9 @@ def draw_game(field, soldier_pos, show_mines=False):
                 screen.blit(soldier_img,(x, y))
             elif field[r][c]==consts.SOLDIER_IMAGE and show_mines:
                 screen.blit(soldier_night_img,(x, y))
-            elif field[r][c]==consts.FLAG:
-                screen.blit(flag_img,(r, c))
+            elif field[r][c]==consts.FLAG and not one:
+                screen.blit(flag_img,(x, y))
+                one=True
 
             # elif r==consts.FLAG_ROWS-1 and c==consts.FLAG_COLS-1:
             #     screen.blit(flag_img, (x, y))
@@ -59,6 +60,7 @@ def draw_game(field, soldier_pos, show_mines=False):
 
             # elif field[r][c]==consts.SOLDIER_IMAGE and INJURY:
             #     screen.blit(injury_img,(x, y))
+            #
 
 
 
