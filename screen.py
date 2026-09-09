@@ -19,9 +19,9 @@ soldier_night=pygame.transform.scale(
         pygame.image.load(consts.SOLDIER_NIGHT),
         (consts.SOLDIER_COLS * consts.CELL_SIZE, consts.SOLDIER_ROWS * consts.CELL_SIZE))
 
-# soldier_injury=pygame.transform.scale(
-#         pygame.image.load(consts.SOLDIER_INJURY),
-#         (consts.SOLDIER_COLS * consts.CELL_SIZE, consts.SOLDIER_ROWS * consts.CELL_SIZE))
+soldier_injury=pygame.transform.scale(
+        pygame.image.load(consts.SOLDIER_INJURY),
+        (consts.SOLDIER_COLS * consts.CELL_SIZE, consts.SOLDIER_ROWS * consts.CELL_SIZE))
 
 
 
