@@ -39,10 +39,10 @@ def can_move (action):
         if corner[0]==0:
             return False
     if action==3:
-        if corner[1]==consts.BOARD_ROWS-1:
+        if corner[1]+consts.SOLDIER_BODY_ROWS==consts.BOARD_ROWS-1: #s
             return False
     if action==4:
-        if corner[0]==consts.BOARD_COLS-1:
+        if corner[0]+1==consts.BOARD_COLS-1:
             return False
     return True
 

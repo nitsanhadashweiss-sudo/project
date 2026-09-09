@@ -11,6 +11,8 @@ see_mines=False
 game_field.create_field()
 
 while running:
+    # if not show_mine():
+    screen.draw_message("Welcome to the Flag game\n Have Fun!")
     action=0
 
     for event in pygame.event.get():
@@ -28,7 +30,8 @@ while running:
                 action = 4
             elif event.key == pygame.K_RETURN:
                 see_mines = True
-                # time.sleep(1)
+                # time.sleep(3)
+                # pygame.KEYUP
                 # see_mines= False
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_RETURN:  # HIDES MINES BACK
@@ -41,6 +44,7 @@ while running:
 
             if game_result!="0":
                 screen.draw_game(game_field.field, soldier.corner, see_mines)
+
 
                 screen.draw_message(game_result)
                 time.sleep(3)

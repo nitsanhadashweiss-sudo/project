@@ -2,7 +2,7 @@ import pygame
 import consts
 
 pygame.init()
-screen = pygame.display.set_mode((consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT-200))
+screen = pygame.display.set_mode((consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT-250))
 pygame.display.set_caption("Flag Game")
 
 soldier_img =pygame.transform.scale(
@@ -30,31 +30,22 @@ flag_img=pygame.transform.scale(
 
 def draw_game(field, soldier_pos, show_mines=False):
     screen.fill(consts.GREEN)
+    count_flag = 0
 
     if show_mines:
         screen.fill(consts.BLACK)
-        #row
-        start_pos_r=(0,0)
-        end_pos_r=(consts.BOARD_COLS*consts.CELL_SIZE, 0)
-        #col
-        start_pos_c = (0, 0)
-        end_pos_c = (0, consts.BOARD_ROWS * consts.CELL_SIZE)
+        for c in range(consts.BOARD_COLS + 1):
+            x = c * consts.CELL_SIZE
+            start_pos=(x, 0)
+            end_pos=(x, consts.BOARD_ROWS * consts.CELL_SIZE)
+            pygame.draw.aaline(screen, consts.GREEN, start_pos, end_pos)
 
-        for r in range(consts.BOARD_ROWS):
-            for c in range(consts.BOARD_COLS):
-                pygame.draw.aaline(screen, consts.GREEN, start_pos_c, end_pos_c)
-                start_pos_c= (end_pos_c[0]+consts.CELL_SIZE*c, 0)
-                end_pos_c=(end_pos_c[0]+consts.CELL_SIZE*c, consts.CELL_SIZE*consts.BOARD_ROWS)
+        for r in range(consts.BOARD_ROWS + 1):
+            y = r * consts.CELL_SIZE
+            start_pos = (0, y)
+            end_pos = (consts.BOARD_COLS * consts.CELL_SIZE, y)
+            pygame.draw.aaline(screen, consts.GREEN, start_pos, end_pos)
 
-            pygame.draw.aaline(screen, consts.GREEN, start_pos_r, end_pos_r)
-            start_pos_r = (0, start_pos_r[1]+consts.CELL_SIZE)
-            end_pos_r = (consts.CELL_SIZE*consts.BOARD_COLS, start_pos_r[1] + consts.CELL_SIZE)
-
-
-
-        # pygame.draw.rect(screen, consts.GREEN, [consts.CELL_SIZE, consts.CELL_SIZE, 50, 50])
-
-        # pygame.draw.aaline(screen, consts.BLACK, start_pos, end_pos) #
 
     for r in range(consts.BOARD_ROWS):
         for c in range(consts.BOARD_COLS):
@@ -70,8 +61,9 @@ def draw_game(field, soldier_pos, show_mines=False):
                 screen.blit(soldier_img,(x, y))
             elif field[r][c]==consts.SOLDIER_IMAGE and show_mines:
                 screen.blit(soldier_night_img,(x, y))
-            elif field[r][c]==consts.FLAG and not show_mines:
+            elif field[r][c]==consts.FLAG and not show_mines and count_flag==0:
                 screen.blit(flag_img,(x, y))
+                count_flag+=1
 
 
 
