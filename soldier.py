@@ -77,7 +77,7 @@ def game_state():
     global touch_mine
     if touch_flag:
         return consts.WIN_MESSAGE
-
     elif touch_mine:
         return consts.LOSE_MESSAGE
+    return "0"
 
