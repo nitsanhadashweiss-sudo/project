@@ -7,22 +7,17 @@ import time
 import pygame
 
 
-won=False
-lost=False
 
 def win():
-    screen.draw_message(consts.WIN_MESSAGE)
-    time.sleep(3)
-    global won
-    won= True
+    if soldier.flag:
+        screen.draw_message(consts.WIN_MESSAGE)
+        time.sleep(3)
 
 
 def lose():
-    screen.draw_message(consts.LOSE_MESSAGE)
-    time.sleep(3)
-    global lost
-    lost = True
-
+    if soldier.mine:
+        screen.draw_message(consts.LOSE_MESSAGE)
+        time.sleep(3)
 
 game_field.create_field()
 

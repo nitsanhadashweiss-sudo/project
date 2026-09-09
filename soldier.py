@@ -1,6 +1,5 @@
 import consts
 import game_field
-import main
 
 corner=(0,0)
 
@@ -20,12 +19,12 @@ def soldier(x,y):
             if game_field.field[row][col]==consts.EMPTY:
                 game_field.field[row][col]=consts.HEAD
             elif game_field.field[row][col]==consts.FLAG:
-                main.win()
+                flag()
     for col in range (x,x+consts.SOLDIER_COLS):
         if game_field.field[y+consts.SOLDIER_BODY_ROWS][col] == consts.EMPTY:
             game_field.field[y+consts.SOLDIER_BODY_ROWS][col]=consts.LEGS
         if game_field.field[y+consts.SOLDIER_BODY_ROWS][col] == consts.MINE:
-            main.lose()
+            mine()
 
 def can_move (action):
     global corner
@@ -54,5 +53,17 @@ def soldier_move(action):
             soldier(corner[0],corner[1]+1)
         if action==4:
           soldier(corner[0]+1,corner[1])
+
+flag=False
+mine=False
+
+def flag():
+    global flag
+    flag=True
+
+def mine():
+    global mine
+    mine=True
+
 
 
