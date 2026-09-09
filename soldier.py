@@ -73,9 +73,11 @@ def game_state():
 
 
 def game_state():
-    if flag():
+    global touch_flag
+    global touch_mine
+    if touch_flag:
         return consts.WIN_MESSAGE
 
-    elif mine():
+    elif touch_mine:
         return consts.LOSE_MESSAGE
 
