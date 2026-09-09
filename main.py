@@ -11,7 +11,7 @@ see_mines=False
 game_field.create_field()
 
 while running:
-    action=1
+    action=0
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
@@ -39,7 +39,7 @@ while running:
 
             game_result = soldier.game_state()
 
-            if game_result:
+            if game_result!="0":
                 screen.draw_game(game_field.field, soldier.corner, see_mines)
 
                 screen.draw_message(game_result)
