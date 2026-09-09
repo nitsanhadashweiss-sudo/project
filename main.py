@@ -6,49 +6,55 @@ import game_field
 import time
 import pygame
 
+running=True
+see_mines=False
 
 
-def win():
-    if soldier.flag:
-        screen.draw_message(consts.WIN_MESSAGE)
-        time.sleep(3)
-
-
-def lose():
-    if soldier.mine:
-        screen.draw_message(consts.LOSE_MESSAGE)
-        time.sleep(3)
-
-game_field.create_field()
-
-running = True
 while running:
-    current_time = pygame.time.get_ticks()
+    action=0
+    game_field.create_field()
 
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+        if event.type==pygame.QUIT:
+            running=False
 
-    keys = pygame.key.get_pressed()
-    action=0
-    if keys[pygame.K_UP]:
-        action=1
-    elif keys[pygame.K_DOWN]:
-        action=3
-    elif keys[pygame.K_LEFT]:
-        action=2
-    elif keys[pygame.K_RIGHT]:
-        action=4
+        elif event.type==pygame.KEYDOWN:
+            if event.key==pygame.K_UP:
+                action=1
+            elif event.key==pygame.K_LEFT:
+                action=2
+            elif event.key == pygame.K_DOWN:
+                action = 3
+            elif event.key == pygame.K_RIGHT:
+                action = 4
+            elif event.key == pygame.K_RETURN: #ENTER   BUT FOR 1 SECOND!
+                see_mines = True
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_RETURN:  # HIDES MINES BACK
+                see_mines = False
 
-    if keys[pygame.K_KP_ENTER]:
-        game_field.board_show()
+        if action!= 0:
+            soldier.soldier_move(action)
 
-    soldier.soldier_move(action)
+            game_result = soldier.game_state()
 
-if won or lost:
-    running = False
+            if game_result:
+                screen.draw_game(game_field.field, soldier.corner, see_mines)
+
+                screen.draw_message(game_result)
+                time.sleep(3)
+
+                running = False
+
+
+        screen.draw_game(game_field.field, soldier.corner, see_mines)
 
 pygame.quit()
 sys.exit()
 
 
+
+
+# game_field.create_field()
+#
+# screen.draw_game(game_field.field, (0,0), see_mines)
