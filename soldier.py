@@ -1,6 +1,6 @@
 import consts
 import game_field
-#
+
 corner=(0,0)
 touch_flag=False
 touch_mine=False

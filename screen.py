@@ -33,7 +33,6 @@ def draw_game(field, soldier_pos, show_mines=False):
 
 
     for r in range(consts.BOARD_ROWS):
-        print (r)
         for c in range(consts.BOARD_COLS):
             x = c * consts.CELL_SIZE
             y = r * consts.CELL_SIZE

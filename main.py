@@ -26,7 +26,7 @@ while running:
                 action = 3
             elif event.key == pygame.K_RIGHT:
                 action = 4
-            elif event.key == pygame.K_RETURN: #ENTER   BUT FOR 1 SECOND!
+            elif event.key == pygame.K_RETURN:
                 see_mines = True
                 # time.sleep(1)
                 # see_mines= False
