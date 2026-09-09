@@ -11,7 +11,7 @@ see_mines=False
 game_field.create_field()
 
 while running:
-    action=0
+    action=1
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
