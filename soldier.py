@@ -1,9 +1,9 @@
 import consts
 import game_field
-#
+
 corner=(0,0)
-flag=False
-mine=False
+touch_flag=False
+touch_mine=False
 
 def clean_soldier():
     for row in range(consts.SOLDIER_ROWS):
@@ -13,6 +13,8 @@ def clean_soldier():
 
 
 def soldier(x,y):
+    global touch_flag
+    global touch_mine
     clean_soldier()
     global corner
     corner=(x,y)
@@ -21,15 +23,29 @@ def soldier(x,y):
             if game_field.field[row][col]==consts.EMPTY:
                 game_field.field[row][col]=consts.HEAD
             elif game_field.field[row][col]==consts.FLAG:
-                flag=True
+                touch_flag=True
     for col in range (x,x+consts.SOLDIER_COLS):
         if game_field.field[y+consts.SOLDIER_BODY_ROWS][col] == consts.EMPTY:
             game_field.field[y+consts.SOLDIER_BODY_ROWS][col]=consts.LEGS
         if game_field.field[y+consts.SOLDIER_BODY_ROWS][col] == consts.MINE:
-            mine=True
+            touch_mine=True
 
 def can_move (action):
     global corner
+    # if action==1:
+    #     if corner[1]==0:
+    #         return False
+    # if action==2:
+    #     if corner[0]==0:
+    #         return False
+    # if action==3:
+    #     if corner[1]==consts.BOARD_COLS:
+    #         return False
+    # if action==4:
+    #     if corner[0]==consts.BOARD_ROWS+18:
+    #         return False
+    # return True
+
     if action==1:
         if corner[1]==0:
             return False
@@ -37,10 +53,10 @@ def can_move (action):
         if corner[0]==0:
             return False
     if action==3:
-        if corner[1]==consts.SOLDIER_COLS:
+        if corner[1]==consts.BOARD_ROWS-1:
             return False
     if action==4:
-        if corner[0]==consts.SOLDIER_BODY_ROWS:
+        if corner[0]==consts.BOARD_COLS-1:
             return False
     return True
 
@@ -58,25 +74,14 @@ def soldier_move(action):
 
 message=""
 
-def flag():
-    if flag:
-        global message
-        message=consts.WIN_MESSAGE
-        return True
-    return False
-
-
-def mine():
-    if mine:
-        global message
-        message=consts.LOSE_MESSAGE
-        return True
-    return False
-
 def game_state():
-    if flag():
+    global touch_flag
+    global touch_mine
+    if touch_flag:
         return consts.WIN_MESSAGE
-
-    elif mine():
+    elif touch_mine:
         return consts.LOSE_MESSAGE
+    else:
+        return "0"
+
 
