@@ -7,17 +7,10 @@ import time
 import pygame
 
 
-
-def win():
-    if soldier.flag:
-        screen.draw_message(consts.WIN_MESSAGE)
-        time.sleep(3)
+won=False
+lost=False
 
 
-def lose():
-    if soldier.mine:
-        screen.draw_message(consts.LOSE_MESSAGE)
-        time.sleep(3)
 
 game_field.create_field()
 
@@ -45,8 +38,11 @@ while running:
 
     soldier.soldier_move(action)
 
-if won or lost:
-    running = False
+    if soldier.flag() or soldier.mine():
+        running = False
+
+screen.draw_message(soldier.message)
+time.sleep(3)
 
 pygame.quit()
 sys.exit()
