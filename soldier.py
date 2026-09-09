@@ -1,6 +1,6 @@
 import consts
 import game_field
-
+#
 corner=(0,0)
 flag=False
 mine=False
