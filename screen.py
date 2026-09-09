@@ -31,6 +31,30 @@ flag_img=pygame.transform.scale(
 def draw_game(field, soldier_pos, show_mines=False):
     screen.fill(consts.GREEN)
 
+    if show_mines:
+        screen.fill(consts.BLACK)
+        #row
+        start_pos_r=(0,0)
+        end_pos_r=(consts.BOARD_COLS*consts.CELL_SIZE, 0)
+        #col
+        start_pos_c = (0, 0)
+        end_pos_c = (0, consts.BOARD_ROWS * consts.CELL_SIZE)
+
+        for r in range(consts.BOARD_ROWS):
+            for c in range(consts.BOARD_COLS):
+                pygame.draw.aaline(screen, consts.GREEN, start_pos_c, end_pos_c)
+                start_pos_c= (end_pos_c[0]+consts.CELL_SIZE*c, 0)
+                end_pos_c=(end_pos_c[0]+consts.CELL_SIZE*c, consts.CELL_SIZE*consts.BOARD_ROWS)
+
+            pygame.draw.aaline(screen, consts.GREEN, start_pos_r, end_pos_r)
+            start_pos_r = (0, start_pos_r[1]+consts.CELL_SIZE)
+            end_pos_r = (consts.CELL_SIZE*consts.BOARD_COLS, start_pos_r[1] + consts.CELL_SIZE)
+
+
+
+        # pygame.draw.rect(screen, consts.GREEN, [consts.CELL_SIZE, consts.CELL_SIZE, 50, 50])
+
+        # pygame.draw.aaline(screen, consts.BLACK, start_pos, end_pos)
 
     for r in range(consts.BOARD_ROWS):
         for c in range(consts.BOARD_COLS):
@@ -38,7 +62,7 @@ def draw_game(field, soldier_pos, show_mines=False):
             y = r * consts.CELL_SIZE
 
 
-            if field[r][c]==consts.BUSH and bush_img:
+            if field[r][c]==consts.BUSH and bush_img and not show_mines:
                 screen.blit(bush_img,(x, y))
             elif field[r][c]==consts.MINE and show_mines and mine_img:
                 screen.blit(mine_img,(x, y))
@@ -46,8 +70,11 @@ def draw_game(field, soldier_pos, show_mines=False):
                 screen.blit(soldier_img,(x, y))
             elif field[r][c]==consts.SOLDIER_IMAGE and show_mines:
                 screen.blit(soldier_night_img,(x, y))
-            elif field[r][c]==consts.FLAG:
+            elif field[r][c]==consts.FLAG and not show_mines:
                 screen.blit(flag_img,(x, y))
+
+
+
 
             # elif r==consts.FLAG_ROWS-1 and c==consts.FLAG_COLS-1:
             #     screen.blit(flag_img, (x, y))
