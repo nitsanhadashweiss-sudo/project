@@ -1,6 +1,6 @@
 import consts
 import game_field
-
+#
 corner=(0,0)
 touch_flag=False
 touch_mine=False
@@ -72,5 +72,10 @@ def game_state():
 
 
 
+def game_state():
+    if flag():
+        return consts.WIN_MESSAGE
 
+    elif mine():
+        return consts.LOSE_MESSAGE
 
