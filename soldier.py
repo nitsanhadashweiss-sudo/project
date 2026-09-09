@@ -73,5 +73,10 @@ def mine():
         return True
     return False
 
+def game_state():
+    if flag():
+        return consts.WIN_MESSAGE
 
+    elif mine():
+        return consts.LOSE_MESSAGE
 
