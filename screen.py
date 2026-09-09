@@ -54,7 +54,7 @@ def draw_game(field, soldier_pos, show_mines=False):
 
         # pygame.draw.rect(screen, consts.GREEN, [consts.CELL_SIZE, consts.CELL_SIZE, 50, 50])
 
-        # pygame.draw.aaline(screen, consts.BLACK, start_pos, end_pos)
+        # pygame.draw.aaline(screen, consts.BLACK, start_pos, end_pos) #
 
     for r in range(consts.BOARD_ROWS):
         for c in range(consts.BOARD_COLS):
